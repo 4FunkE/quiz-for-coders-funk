@@ -10,42 +10,36 @@ var startingMessage = document.querySelector(".starting-message");
 var startButton = document.querySelector(".start-button");
 var allQuestions = document.querySelector(".all-questions");
 
-//question 1
-var questionOne = document.querySelector(".questions-one");
-var allOneChoices = document.querySelector(".questions-one-answer-choices");
-var optionOne0 = docuemnt.querySelector("option1.0");
-var optionOne1 = docuemnt.querySelector("option1.1");
-var optionOne2 = docuemnt.querySelector("option1.2");
-var optionOne3 = docuemnt.querySelector("option1.3correct");
+//questions 0,1,2,3,4
+var questionOne = document.querySelector(".questions-zero");
+var allOneChoices = document.querySelector(".questions-zero-answer-choices");
+var optionOne0 = docuemnt.querySelector("populate0-option");
 
-//question 2
-var questiontwo = document.querySelector(".questions-two");
-var alltwoChoices = document.querySelector(".questions-two-answer-choices");
-var optiontwo0 = docuemnt.querySelector("option2.0");
-var optiontwo1 = docuemnt.querySelector("option2.1correct");
-var optiontwo2 = docuemnt.querySelector("option2.2");
-var optiontwo3 = docuemnt.querySelector("option2.3");
 
-//question 3
-var questionthree = document.querySelector(".questions-three");
-var allthreeChoices = document.querySelector(".questions-three-answer-choices");
-var optionthree0 = docuemnt.querySelector("option3.0correct");
-var optionthree1 = docuemnt.querySelector("option3.1");
-var optionthree2 = docuemnt.querySelector("option3.2");
-var optionthree3 = docuemnt.querySelector("option3.3");
-
-//question 4
-var questionfour = document.querySelector(".questions-four");
-var allfourChoices = document.querySelector(".questions-four-answer-choices");
-var optionfour0 = docuemnt.querySelector("option4.0");
-var optionfour1 = docuemnt.querySelector("option4.1");
-var optionfour2 = docuemnt.querySelector("option4.2");
-var optionfour3 = docuemnt.querySelector("option4.3correct");
-
-//question 5
-var questionfive = document.querySelector(".questions-five");
-var allfiveChoices = document.querySelector(".questions-five-answer-choices");
-var optionfive0 = docuemnt.querySelector("option5.0");
-var optionfive1 = docuemnt.querySelector("option5.1");
-var optionfive2 = docuemnt.querySelector("option5.2");
-var optionfive3 = docuemnt.querySelector("option5.3correct");
+var questions = [
+    {
+        title: "What does API stand for?",
+        options: ["Appliance Power Initializer", "Application Problem Insider", "Apple Pineappeles Icecream", "Application Programing Interface"],
+        correct: "Application Programing Interface",
+    },
+    {
+        title: "What Does DOM stand for?",
+        options: ["Don't Open Mayonnaise", "Document Object Model", "Data Object Monitor", "Definitely Open Mayonnaise"],
+        correct: "Document Object Model",
+    },
+    {
+        title: "What can you achieve with DOM traversal?",
+        options: ["Use commands on the console.log to work your way down from parents to children.", "Can target element ID's", "an add a class and style.", "All of the Above...Duh"],
+        correct: "All of the Above...Duh",
+    },
+    {
+        title: "When setting a timer interval, how many seconds are in 1000 milliseconds?",
+        options: ["0.1 second", "1 second", "10 seconds", "1000 seconds"],
+        correct: "1 second",
+    },
+    {
+        title: "Which is an example of a Boolean?",
+        options: ["a bull type", "23", "true", "A cow with long horns"],
+        correct: "true",
+    },
+]
