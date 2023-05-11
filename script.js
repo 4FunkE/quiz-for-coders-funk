@@ -68,3 +68,17 @@ var isWin = false;
 var firstQuestion = 0;
 var typedInitials = "";
 
+//functions following criteria WHEN & THEN
+
+//when click start-Timer starts
+
+//when click start-first question
+
+//when answer question-next question
+
+//when i am incorrect - times will subtract
+
+//when all 5 questions done - finished html appears
+
+//when time reachers 0 - finished html appears
+
