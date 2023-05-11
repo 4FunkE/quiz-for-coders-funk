@@ -4,17 +4,28 @@
 
 // questions presentation 0,1,2,3,4; wrong answer subtract time&say wrong&next; right answer say correct show next
 
-//all questions answered or time 0 = all finished enter intitails 
+//all questions answered or time 0 = all finished enter intitails var highScore = document.querySelector(".");
 
+//creating variables for classes in header
+var highScoreBtn = document.querySelector(".high-score-btn");
+var timerCounter = document.querySelector(".timer-counter");
 var startingMessage = document.querySelector(".starting-message");
 var startButton = document.querySelector(".start-button");
+//main
+var allMainEl = document.querySelector(".all-main-elements");
+//question variables 0,1,2,3,4
 var allQuestions = document.querySelector(".all-questions");
-
-//questions 0,1,2,3,4
-var questionOne = document.querySelector(".questions-zero");
-var allOneChoices = document.querySelector(".questions-zero-answer-choices");
-var optionOne0 = docuemnt.querySelector("populate0-option");
-
+var populatesQuestionsAnswers = document.querySelector(".populate-questions-options");
+//section finished
+var finished = document.querySelector(".finished");
+var formInitials = document.querySelector(".enter-initials");
+var finalScore = document.querySelector("#your-final-score");
+var initialBox = document.querySelector("#initial-box");
+//div highscore button link
+var highScore = document.querySelector(".highscores");
+var savedInitials = document.querySelector("#pushed-initial-list");
+var backBtn = document.querySelector(".Back-to-start");
+var clearBtn = document.querySelector(".clear-scores");
 
 var questions = [
     {
