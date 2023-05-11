@@ -88,9 +88,14 @@ function startTimer() {
 
 //when click start-first question
 
-startButton.addEventListener
+startButton.addEventListener("click", function() {
+    startTimer();
+})
 
 //when answer question-next question
+function showQuestion() {
+    allQuestions.textContent = questions[0].title;
+    populatesQuestionsAnswers.textContent = questions[0].options[];
 
 //when i am incorrect - times will subtract
 
