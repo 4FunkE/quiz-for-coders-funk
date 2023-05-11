@@ -53,4 +53,18 @@ var questions = [
         options: ["a bull type", "23", "true", "A cow with long horns"],
         correct: "true",
     },
-]
+];
+
+//setting game parameters
+//timer
+var timeCount = 75;
+var restTimer = 0;
+//score
+var finalScore = 0;
+var winpoints = 0;
+var losepoints = 0;
+var isWin = false;
+//questions
+var firstQuestion = 0;
+var typedInitials = "";
+
