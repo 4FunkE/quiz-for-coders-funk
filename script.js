@@ -70,9 +70,25 @@ var typedInitials = "";
 
 //functions following criteria WHEN & THEN
 
-//when click start-Timer starts
+//when click start - Timer starts
+function startTimer() {
+    var timerInterval = setInterval(function() {
+        timeCount--;
+        timerCounter.textContent = timeCount + " seconds left!";
+        
+        if(timeCount === 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            // Calls function finished var finished = document.querySelector(".finished");var formInitials = document.querySelector(".enter-initials");var finalScore = document.querySelector("#your-final-score");var initialBox = document.querySelector("#initial-box");
+            FinishedMessage();
+          } 
+        }, 1000);
+}
+
 
 //when click start-first question
+
+startButton.addEventListener
 
 //when answer question-next question
 
