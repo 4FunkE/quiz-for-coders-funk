@@ -20,7 +20,7 @@ var correctWrong = document.querySelector("#positive-neg-line");
 //section finished
 var finished = document.querySelector(".finished");
 var formInitials = document.querySelector(".enter-initials");
-var finalScore = document.querySelector("#your-final-score");
+var yourFinalScore = document.querySelector("#your-final-score");
 var initialBox = document.querySelector("#initial-box");
 //div highscore button link
 var highScore = document.querySelector(".highscores");
@@ -65,6 +65,7 @@ var finalScore = 0;
 var winpoints = 0;
 var losepoints = 0;
 var isWin = false;
+var gameEnd = true;
 //questions
 var firstQuestion = 0;
 var typedInitials = "";
@@ -78,10 +79,8 @@ function startTimer() {
         timerCounter.textContent = timeCount + " seconds left!";
         
         if(timeCount === 0) {
-            // Stops execution of action at set interval
             clearInterval(timerInterval);
-            // Calls function finished var finished = document.querySelector(".finished");var formInitials = document.querySelector(".enter-initials");var finalScore = document.querySelector("#your-final-score");var initialBox = document.querySelector("#initial-box");
-            FinishedMessage();
+            endGame();
           } 
         }, 1000);
 }
@@ -90,7 +89,8 @@ function startTimer() {
 //when click start-first question
 function start() {
     startingMessage.style.display = "none";
-    allQuestions.style.display = "block";
+    finished.style.display = "none";
+    highScore.style.display = "none";
     firstQuestion = 0
     startTimer();
 };
@@ -142,8 +142,8 @@ function checkAnswer(event) {
     }
 
     //next
-    if (firstQuestion < questions.length -1 ) {
-        render(firstQuestion +1);
+    if (firstQuestion < questions.length - 1 ) {
+        render(firstQuestion + 1);
     } else {
     gameOver();
 }
@@ -151,7 +151,16 @@ questionCount++;
 };
 
 //when all 5 questions done - finished html appears
+function endGame() { 
+    gameEnd = true; 
+    yourFinalScore.textContent = "Your score is: " + finalScore;
 
+    //hiding html
+    startingMessage.style.display = "none";
+    allQuestions.style.display = "none";
+    highScore.style.display = "none";
+    return;
+}
 
 //when time reachers 0 - finished html appears
 
