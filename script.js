@@ -92,18 +92,35 @@ function start() {
     allQuestions.style.display = "block";
     firstQuestion = 0
     startTimer();
-    showQuestion(questionNumber);
+    //showQuestion(questionNumber);
 };
 
 startButton.addEventListener("click", function() {
     startTimer();
+    //render(firstQuestion);
 })
 
+//make questions
+function render(firstQuestion) {
+    allQuestions.innerHTML = "";
+    populatesQuestionsAnswers.innerHTML = "";
+    
+    // looping my question object container
+    for (var i = 0; i < questions.length; i++) {
+        var userQuestion = questions[firstQuestion].title;
+        var userChoices = questions[firstQuestion].choices;
+        allQuestions.textContent = userQuestion;
+    }
+    // New for each for question choices
+    userChoices.forEach(function (newItem) {
+        var listItem = document.createElement("li");
+        listItem.textContent = newItem;
+        allQuestions.appendChild(populatesQuestionsAnswers);
+        populatesQuestionsAnswers.appendChild(listItem);
+        listItem.addEventListener("click", (compare));
+    })
+}
 //when answer question-next question
-function showQuestion() {
-    allQuestions.textContent = questions[0].title;
-    populatesQuestionsAnswers.textContent = questions[0].options[];
-};
 
 //when i am incorrect - times will subtract
 
