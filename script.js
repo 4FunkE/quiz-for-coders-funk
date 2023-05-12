@@ -87,6 +87,13 @@ function startTimer() {
 
 
 //when click start-first question
+function start() {
+    startingMessage.style.display = "none";
+    allQuestions.style.display = "block";
+    firstQuestion = 0
+    startTimer();
+    showQuestion(questionNumber);
+};
 
 startButton.addEventListener("click", function() {
     startTimer();
@@ -96,6 +103,7 @@ startButton.addEventListener("click", function() {
 function showQuestion() {
     allQuestions.textContent = questions[0].title;
     populatesQuestionsAnswers.textContent = questions[0].options[];
+};
 
 //when i am incorrect - times will subtract
 
