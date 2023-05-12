@@ -16,6 +16,7 @@ var allMainEl = document.querySelector(".all-main-elements");
 //question variables 0,1,2,3,4
 var allQuestions = document.querySelector(".all-questions");
 var populatesQuestionsAnswers = document.querySelector(".populate-questions-options");
+var correctWrong = document.querySelector("#positive-neg-line");
 //section finished
 var finished = document.querySelector(".finished");
 var formInitials = document.querySelector(".enter-initials");
@@ -121,9 +122,36 @@ function render(firstQuestion) {
 }
 //when answer question-next question
 
-//when i am incorrect - times will subtract
+//when i am incorrect when im correct- times will subtract
+function checkAnswer(event) {
+    event.preventDefault();
+    //make it display
+    correctWrong.style.display = "block";
+    setTimeout(function () {
+        correctWrong.style.display = 'none';
+    }, 1000);
+
+    // check if its right, if not then oops
+    if (questions[firstQuestion].correct == event.target.value) {
+        correctWrong.textContent = "Correct!"; 
+        finalScore = finalScore + 1;
+
+    } else {
+        timeCount = timeCount - 5;
+        correctWrong.textContent = "oops";
+    }
+
+    //next
+    if (firstQuestion < questions.length -1 ) {
+        render(firstQuestion +1);
+    } else {
+    gameOver();
+}
+questionCount++;
+};
 
 //when all 5 questions done - finished html appears
+
 
 //when time reachers 0 - finished html appears
 
