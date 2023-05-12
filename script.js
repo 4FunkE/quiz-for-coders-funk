@@ -92,12 +92,11 @@ function start() {
     allQuestions.style.display = "block";
     firstQuestion = 0
     startTimer();
-    //showQuestion(questionNumber);
 };
 
 startButton.addEventListener("click", function() {
-    startTimer();
-    //render(firstQuestion);
+    start();
+    render(firstQuestion);
 })
 
 //make questions
@@ -108,10 +107,10 @@ function render(firstQuestion) {
     // looping my question object container
     for (var i = 0; i < questions.length; i++) {
         var userQuestion = questions[firstQuestion].title;
-        var userChoices = questions[firstQuestion].choices;
+        var userChoices = questions[firstQuestion].options;
         allQuestions.textContent = userQuestion;
     }
-    // New for each for question choices
+    // creatng li question choices
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
