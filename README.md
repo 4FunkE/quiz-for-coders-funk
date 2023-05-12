@@ -1,4 +1,4 @@
-# <FunkE Coding Quiz>
+# FunkE Coding Quiz
 
 ## Description
 
@@ -18,8 +18,8 @@ No installation needed. Is the URL link here -->
 ## Usage
 
     '''
-    ![alt-text](/assets/images/)
-    '''
+ ![alt-text](assets/images/2023-05-12.png)
+ '''
 
 ## Credits
 
