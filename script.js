@@ -1,25 +1,13 @@
-//click start button
-
-// timer starts
-
-// questions presentation 0,1,2,3,4; wrong answer subtract time&say wrong&next; right answer say correct show next
-
-//all questions answered or time 0 = all finished enter intitails var highScore = document.querySelector(".");
-
-//creating variables for classes in header
+//variables for classes in header
 var highScoreBtn = document.querySelector(".high-score-btn");
 var timerCounter = document.querySelector(".timer-counter");
 var startingMessage = document.querySelector(".starting-message");
 var startButton = document.querySelector(".start-button");
-
-//main
-//var allMainEl = document.querySelector(".all-main-elements");
-
 //question variables 0,1,2,3,4
 var allQuestions = document.querySelector(".all-questions");
 var populatesQuestionsAnswers = document.querySelector(".populate-questions-options");
 var correctWrong = document.querySelector("#positive-neg-line");
-//section finished
+//The "finished" section variables
 var finished = document.querySelector(".finished");
 var formInitials = document.querySelector(".enter-initials");
 var yourFinalScore = document.querySelector("#your-final-score");
@@ -29,7 +17,7 @@ var highScore = document.querySelector(".highscores");
 var savedInitials = document.querySelector("#pushed-initial-list");
 var backBtn = document.querySelector(".Back-to-start");
 var clearBtn = document.querySelector(".clear-scores");
-
+//The questions
 var questions = [
     {
         title: "What does API stand for?",
@@ -58,21 +46,9 @@ var questions = [
     },
 ];
 
-//setting game parameters
-//timer
 var timeCount = 60;
-//var restTimer = 0;
-//score
 var finalScore = 0;
-//var winpoints = 0;
-//var losepoints = 0;
-//var isWin = false;
-//var gameEnd = true;
-//questions
 var firstQuestion = 0;
-//var typedInitials = "";
-
-//functions following criteria WHEN & THEN
 
 //when click start - Timer starts
 function startTimer() {
@@ -119,9 +95,8 @@ function render(index) {
         listItem.addEventListener("click", checkAnswer);
     });
 }
-//when answer question-next question
 
-//when i am incorrect when im correct- times will subtract
+//When User is incorrect / When User is correct
 function checkAnswer(event) {
     event.preventDefault();
     //make it display
@@ -139,7 +114,7 @@ function checkAnswer(event) {
         correctWrong.textContent = "Oops";
     }
 
-    //next
+    //Next Question
     if (firstQuestion < questions.length - 1 ) {
         firstQuestion++;
         render(firstQuestion);
@@ -150,15 +125,11 @@ function checkAnswer(event) {
 
 //when all 5 questions done - finished html appears
 function endGame() { 
-    gameEnd = true; 
     yourFinalScore.textContent = "Your score is: " + finalScore;
 
     //hiding html
     startingMessage.style.display = "none";
     allQuestions.style.display = "none";
     highScore.style.display = "none";
-    return;
+    finished.style.display = "block";
 }
-
-//when time reachers 0 - finished html appears
-
