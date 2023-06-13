@@ -49,6 +49,7 @@ var questions = [
 var timeCount = 60;
 var finalScore = 0;
 var firstQuestion = 0;
+var gameEnded = true;
 
 //event listeners for buttons
 startButton.addEventListener("click", function() {
@@ -66,17 +67,32 @@ clearBtn.addEventListener("click", function() {
     renderHighScores();
 });
 
+//Game start
+function gameLoadPage() {
+    finished.style.display = "none"; 
+    highScoresDiv.style.display = "none";
+}
+gameLoadPage();
+
 //when click start - Timer starts
 function startTimer() {
     var timerInterval = setInterval(function() {
         timeCount--;
         timerCounter.textContent = timeCount + " seconds left!";
-        
-        if(timeCount === 0) {
-            clearInterval(timerInterval);
+
+        if(gameEnded === true) {
+            clearInterval(timerInterval); //stop
+            return;
+        }
+        if(timeLeft < 1) {
+            clearInterval(timerInterval); //stop
             endGame();
-          } 
-        }, 1000);
+        }
+
+        timerCounter.textContent = timeCount;
+
+    }, 1000);
+    return;
 }
 
 //when click start-first question
@@ -90,6 +106,7 @@ function start() {
 
 //make questions
 function showQuestion() {
+    gameEnded = false;
     var question = questions[firstQuestion];
     allQuestions.textContent = question.title;
   
@@ -186,15 +203,20 @@ function goBack() {
     startingMessage.style.display = "block";
     allQuestions.style.display = "none";
     highScoresDiv.style.display = "none";
+
+    location.reload();
 }
 
 //when all 5 questions done - finished html appears
 function endGame() { 
     yourFinalScore.textContent = "Your score is: " + finalScore;
+    gameEnded = true;
 
     //hiding html
     startingMessage.style.display = "none";
     allQuestions.style.display = "none";
     highScoresDiv.style.display = "none";
     finished.style.display = "block";
+
+    return;
 }
