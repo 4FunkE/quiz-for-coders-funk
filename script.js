@@ -131,22 +131,21 @@ function checkAnswer(event) {
     }, 1000);
 
     // check if its right, if not then oops
-    if (questions[firstQuestion].correct == event.target.value) {
+    if (questions[firstQuestion].correct == event.target.textContent) {
         correctWrong.textContent = "Correct!"; 
         finalScore = finalScore + 1;
-
     } else {
         timeCount = timeCount - 5;
-        correctWrong.textContent = "oops";
+        correctWrong.textContent = "Oops";
     }
 
     //next
     if (firstQuestion < questions.length - 1 ) {
-        render(firstQuestion + 1);
+        firstQuestion++;
+        render(firstQuestion);
     } else {
-    gameOver();
-}
-questionCount++;
+        endGame();
+    }
 };
 
 //when all 5 questions done - finished html appears
