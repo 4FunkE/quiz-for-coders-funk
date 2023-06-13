@@ -92,7 +92,6 @@ function start() {
 function showQuestion() {
     var question = questions[firstQuestion];
     allQuestions.textContent = question.title;
-    populatesQuestionsAnswers.textContent = question.options;
   
     // Clear previous answer choices
     populatesQuestionsAnswers.innerHTML = "";
@@ -105,6 +104,7 @@ function showQuestion() {
         checkAnswer(index);
       });
       populatesQuestionsAnswers.appendChild(button);
+      allQuestions.appendChild(populatesQuestionsAnswers);
     });
   }
 
