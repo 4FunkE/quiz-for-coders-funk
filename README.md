@@ -13,12 +13,12 @@ This website is for beginner coders looking to test their knowledge. The quiz co
 
 ## Installation
 
-No installation needed. Is the URL link here -->
+No installation needed. Is the URL link here --> https://4funke.github.io/quiz-for-coders-funk/
 
 ## Usage
 
     '''
- ![alt-text](assets/images/2023-05-12.png)
+ ![alt-text](assets/images/Screenshot%202023-06-13%20151918.png)
  '''
 
 ## Credits
