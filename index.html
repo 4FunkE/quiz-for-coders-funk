@@ -11,7 +11,7 @@
 <body>
     <nav>
         <button class = "high-score-btn">See Highscores</button>
-        <span class="timer-counter">60</span>
+        <span class="timer-counter" id="timer">60</span>
         </div>
     </nav>
 
@@ -26,17 +26,17 @@
     </header>
 
     <!--where my questions/finished/highscores live-->
-    <main class = "all-main-elements">
+    <main class = "all-main-elements" id="quiz-container">
         <!--Add 5 questions with 4 clickable items, only one is correct-->
-        <section class = "all-questions">
-            <ul class = "populate-questions-options">
+        <section class = "all-questions" id="question">
+            <ul class = "populate-questions-options" id="choices">
             <!--this is where the questions and options will populate-->
             </ul>
             <div id="positive-neg-line"></div>
         </section>
 
         <!--The ending message, to add initials for high score-->
-        <section class = "finished">
+        <section class = "finished" id="feedback">
             <h2>Finished!</h2>
             <form class = "enter-initials">
                 <label for="final-score" id="your-final-score">Your final score: </label>
@@ -45,9 +45,9 @@
         </section>
 
         <!--Highscore message -->
-        <div class="highscores">
+        <div class="highscores" id="score-container">
             <h1>Highscores List</h1>
-                <ul id="pushed-initial-list">
+                <ul id="pushed-initial-list" id="high-scores">
                 <!--this is where the initials of winners will populate-->
                 </ul>
             <button class="Back-to-start">Go Back</button>
