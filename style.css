@@ -41,3 +41,47 @@
   ul {
     list-style: none;
   }
+
+  #quiz-container {
+    margin-top: 20px;
+  }
+
+  #question {
+    margin-bottom: 10px;
+  }
+
+  #choices {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  #choices button {
+    display: block;
+    margin-bottom: 5px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  #feedback {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  #timer {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  #score-container {
+    margin-top: 20px;
+  }
+
+  #high-scores {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  #high-scores li {
+    margin-bottom: 5px;
+  }
