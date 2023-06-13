@@ -11,8 +11,10 @@ var highScoreBtn = document.querySelector(".high-score-btn");
 var timerCounter = document.querySelector(".timer-counter");
 var startingMessage = document.querySelector(".starting-message");
 var startButton = document.querySelector(".start-button");
+
 //main
-var allMainEl = document.querySelector(".all-main-elements");
+//var allMainEl = document.querySelector(".all-main-elements");
+
 //question variables 0,1,2,3,4
 var allQuestions = document.querySelector(".all-questions");
 var populatesQuestionsAnswers = document.querySelector(".populate-questions-options");
@@ -58,17 +60,17 @@ var questions = [
 
 //setting game parameters
 //timer
-var timeCount = 75;
-var restTimer = 0;
+var timeCount = 60;
+//var restTimer = 0;
 //score
 var finalScore = 0;
-var winpoints = 0;
-var losepoints = 0;
-var isWin = false;
-var gameEnd = true;
+//var winpoints = 0;
+//var losepoints = 0;
+//var isWin = false;
+//var gameEnd = true;
 //questions
 var firstQuestion = 0;
-var typedInitials = "";
+//var typedInitials = "";
 
 //functions following criteria WHEN & THEN
 
@@ -85,7 +87,6 @@ function startTimer() {
         }, 1000);
 }
 
-
 //when click start-first question
 function start() {
     startingMessage.style.display = "none";
@@ -101,24 +102,22 @@ startButton.addEventListener("click", function() {
 })
 
 //make questions
-function render(firstQuestion) {
+function render(index) {
     allQuestions.innerHTML = "";
     populatesQuestionsAnswers.innerHTML = "";
     
     // looping my question object container
-    for (var i = 0; i < questions.length; i++) {
-        var userQuestion = questions[firstQuestion].title;
-        var userChoices = questions[firstQuestion].options;
-        allQuestions.textContent = userQuestion;
-    }
+    var userQuestion = questions[index].title;
+    var userChoices = questions[index].options;
+    allQuestions.textContent = userQuestion;
+
     // creatng li question choices
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
-        allQuestions.appendChild(populatesQuestionsAnswers);
         populatesQuestionsAnswers.appendChild(listItem);
-        listItem.addEventListener("click", (compare));
-    })
+        listItem.addEventListener("click", checkAnswer);
+    });
 }
 //when answer question-next question
 
