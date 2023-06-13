@@ -164,7 +164,17 @@ formInitials.addEventListener("submit", function(event) {
             score: finalScore
         };
 
-        
+        //highscore in local storage, add to array, sort the scores
+        var highScore = JSON.parse(localStorage.getItem("highScores")) || [];
+        highScore.push(storedData);
+        highScores.sort(function(a,b) {
+            return b.score - a.score;
+        });
+        //new scores in local storage
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+        initialBox.value = "";
+        showHighScores();
+    }
 })
 
 //when all 5 questions done - finished html appears
