@@ -24,23 +24,6 @@
     font-size: 100%;
     text-align: center;
   }
-  
-  input,
-  select,
-  option,
-  optgroup,
-  textarea,
-  button,
-  pre,
-  code {
-    font-size: 100%;
-    font-family: inherit;
-  }
-  
-  ol,
-  ul {
-    list-style: none;
-  }
 
   #quiz-container {
     margin-top: 20px;
@@ -77,11 +60,11 @@
     margin-top: 20px;
   }
 
-  #high-scores {
+  .high-scores {
     list-style-type: none;
     padding: 0;
   }
 
-  #high-scores li {
+  .high-scores li {
     margin-bottom: 5px;
   }

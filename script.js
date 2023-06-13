@@ -13,7 +13,7 @@ var formInitials = document.querySelector(".enter-initials");
 var yourFinalScore = document.querySelector("#your-final-score");
 var initialBox = document.querySelector("#initial-box");
 //div highscore button link
-var highScores = document.querySelector(".highscores");
+var highScoresDiv = document.querySelector(".highscores");
 var savedInitials = document.querySelector("#pushed-initial-list");
 var backBtn = document.querySelector(".Back-to-start");
 var clearBtn = document.querySelector(".clear-scores");
@@ -50,6 +50,22 @@ var timeCount = 60;
 var finalScore = 0;
 var firstQuestion = 0;
 
+//event listeners for buttons
+startButton.addEventListener("click", function() {
+    start();
+    showQuestion();
+})
+highScoreBtn.addEventListener("click", function() {
+    showHighScores();
+});
+backBtn.addEventListener("click", function() {
+    goBack();
+});
+clearBtn.addEventListener("click", function() {
+    localStorage.removeItem("highScores");
+    renderHighScores();
+});
+
 //when click start - Timer starts
 function startTimer() {
     var timerInterval = setInterval(function() {
@@ -63,53 +79,36 @@ function startTimer() {
         }, 1000);
 }
 
-//event listeners for buttons
-startButton.addEventListener("click", function() {
-    start();
-    render(firstQuestion);
-})
-highScoreBtn.addEventListener("click", function() {
-    showHighScores();
-});
-backBtn.addEventListener("click", function() {
-    goBack();
-});
-clearBtn.addEventListener("click", function() {
-    localStorage.removeItem("highScores");
-    renderHighScores();
-});
-
 //when click start-first question
 function start() {
     startingMessage.style.display = "none";
     finished.style.display = "none";
-    highScores.style.display = "none";
+    highScoresDiv.style.display = "none";
     firstQuestion = 0
     startTimer();
 };
 
 //make questions
-function render(index) {
-    allQuestions.innerHTML = "";
+function showQuestion() {
+    const question = questions[firstQuestion];
+    allQuestions.textContent = question.title;
+  
+    // Clear previous answer choices
     populatesQuestionsAnswers.innerHTML = "";
-    
-    // looping my question object container
-    var userQuestion = questions[index].title;
-    var userChoices = questions[index].options;
-    allQuestions.textContent = userQuestion;
-
-    // creatng li question choices
-    userChoices.forEach(function (newItem) {
-        var listItem = document.createElement("li");
-        listItem.textContent = newItem;
-        populatesQuestionsAnswers.appendChild(listItem);
-        listItem.addEventListener("click", checkAnswer);
+  
+    // Create and append new answer choice buttons
+    question.options.forEach(function(choice, index) {
+      var button = document.createElement("button");
+      button.textContent = choice;
+      button.addEventListener("click", function() {
+        checkAnswer(index);
+      });
+      populatesQuestionsAnswers.appendChild(button);
     });
-}
+  }
 
 //When User is incorrect / When User is correct
-function checkAnswer(event) {
-    event.preventDefault();
+function checkAnswer(answerIndex) {
     //make it display
     correctWrong.style.display = "block";
     setTimeout(function () {
@@ -117,7 +116,7 @@ function checkAnswer(event) {
     }, 1000);
 
     // check if its right, if not then oops
-    if (questions[firstQuestion].correct == event.target.textContent) {
+    if (questions[firstQuestion].correct == questions[firstQuestion].options[answerIndex]) {
         correctWrong.textContent = "Correct!"; 
         finalScore = finalScore + 1;
     } else {
@@ -128,7 +127,7 @@ function checkAnswer(event) {
     //Next Question
     if (firstQuestion < questions.length - 1 ) {
         firstQuestion++;
-        render(firstQuestion);
+        showQuestion();
     } else {
         endGame();
     }
@@ -139,7 +138,7 @@ function showHighScores() {
     startingMessage.style.display = "none";
     allQuestions.style.display = "none";
     finished.style.display = "none";
-    highScores.style.display = "block";
+    highScoresDiv.style.display = "block";
     renderHighScores();
 }
 
@@ -182,10 +181,10 @@ formInitials.addEventListener("submit", function(event) {
 });
 
 function goBack() {
+    finished.style.display = "none";
     startingMessage.style.display = "block";
     allQuestions.style.display = "none";
-    finished.style.display = "none";
-    highScores.style.display = "none";
+    highScoresDiv.style.display = "none";
 }
 
 //when all 5 questions done - finished html appears
@@ -195,6 +194,6 @@ function endGame() {
     //hiding html
     startingMessage.style.display = "none";
     allQuestions.style.display = "none";
-    highScores.style.display = "none";
+    highScoresDiv.style.display = "none";
     finished.style.display = "block";
 }
