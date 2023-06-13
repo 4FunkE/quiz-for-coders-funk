@@ -63,6 +63,18 @@ function startTimer() {
         }, 1000);
 }
 
+//event listeners for buttons
+startButton.addEventListener("click", function() {
+    start();
+    render(firstQuestion);
+})
+highScoreBtn.addEventListener("click", function() {
+    showHighScores();
+});
+backBtn.addEventListener("click", function() {
+    goBack();
+});
+
 //when click start-first question
 function start() {
     startingMessage.style.display = "none";
@@ -71,11 +83,6 @@ function start() {
     firstQuestion = 0
     startTimer();
 };
-
-startButton.addEventListener("click", function() {
-    start();
-    render(firstQuestion);
-})
 
 //make questions
 function render(index) {
@@ -122,6 +129,15 @@ function checkAnswer(event) {
         endGame();
     }
 };
+
+//Show high scores
+function showHighScores() {
+    startingMessage.style.display = "none";
+    allQuestions.style.display = "none";
+    finished.style.display = "none";
+    highScore.style.display = "block";
+    renderHighScores();
+}
 
 //when all 5 questions done - finished html appears
 function endGame() { 
