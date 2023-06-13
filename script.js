@@ -90,8 +90,9 @@ function start() {
 
 //make questions
 function showQuestion() {
-    const question = questions[firstQuestion];
+    var question = questions[firstQuestion];
     allQuestions.textContent = question.title;
+    populatesQuestionsAnswers.textContent = question.options;
   
     // Clear previous answer choices
     populatesQuestionsAnswers.innerHTML = "";
