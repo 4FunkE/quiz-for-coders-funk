@@ -139,6 +139,34 @@ function showHighScores() {
     renderHighScores();
 }
 
+//High scores populate from local storage
+function renderHighScores() {
+    savedInitials.innerHTML = "";
+    var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+    // Create list items to display them
+    highScores.forEach(function(score) {
+        var listItem = document.createElement("li");
+        listItem.textContent = score.initials + " - " + score.score;
+        savedInitials.appendChild(listItem);
+    });
+}
+
+formInitials.addEventListener("submit", function(event) {
+    //Stop default setting in browser
+    event.preventDefault();
+    var initials = intitialBox.value.trim();
+
+    if (initials !== "") {
+        //store initials in an object
+        var storedData = {
+            initials: initials,
+            score: finalScore
+        };
+
+        
+})
+
 //when all 5 questions done - finished html appears
 function endGame() { 
     yourFinalScore.textContent = "Your score is: " + finalScore;
