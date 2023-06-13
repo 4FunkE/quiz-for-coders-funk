@@ -13,7 +13,7 @@ var formInitials = document.querySelector(".enter-initials");
 var yourFinalScore = document.querySelector("#your-final-score");
 var initialBox = document.querySelector("#initial-box");
 //div highscore button link
-var highScore = document.querySelector(".highscores");
+var highScores = document.querySelector(".highscores");
 var savedInitials = document.querySelector("#pushed-initial-list");
 var backBtn = document.querySelector(".Back-to-start");
 var clearBtn = document.querySelector(".clear-scores");
@@ -74,12 +74,16 @@ highScoreBtn.addEventListener("click", function() {
 backBtn.addEventListener("click", function() {
     goBack();
 });
+clearBtn.addEventListener("click", function() {
+    localStorage.removeItem("highScores");
+    renderHighScores();
+});
 
 //when click start-first question
 function start() {
     startingMessage.style.display = "none";
     finished.style.display = "none";
-    highScore.style.display = "none";
+    highScores.style.display = "none";
     firstQuestion = 0
     startTimer();
 };
@@ -135,7 +139,7 @@ function showHighScores() {
     startingMessage.style.display = "none";
     allQuestions.style.display = "none";
     finished.style.display = "none";
-    highScore.style.display = "block";
+    highScores.style.display = "block";
     renderHighScores();
 }
 
@@ -155,7 +159,7 @@ function renderHighScores() {
 formInitials.addEventListener("submit", function(event) {
     //Stop default setting in browser
     event.preventDefault();
-    var initials = intitialBox.value.trim();
+    var initials = initialBox.value.trim();
 
     if (initials !== "") {
         //store initials in an object
@@ -165,8 +169,8 @@ formInitials.addEventListener("submit", function(event) {
         };
 
         //highscore in local storage, add to array, sort the scores
-        var highScore = JSON.parse(localStorage.getItem("highScores")) || [];
-        highScore.push(storedData);
+        var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+        highScores.push(storedData);
         highScores.sort(function(a,b) {
             return b.score - a.score;
         });
@@ -175,7 +179,14 @@ formInitials.addEventListener("submit", function(event) {
         initialBox.value = "";
         showHighScores();
     }
-})
+});
+
+function goBack() {
+    startingMessage.style.display = "block";
+    allQuestions.style.display = "none";
+    finished.style.display = "none";
+    highScores.style.display = "none";
+}
 
 //when all 5 questions done - finished html appears
 function endGame() { 
@@ -184,6 +195,6 @@ function endGame() {
     //hiding html
     startingMessage.style.display = "none";
     allQuestions.style.display = "none";
-    highScore.style.display = "none";
+    highScores.style.display = "none";
     finished.style.display = "block";
 }
